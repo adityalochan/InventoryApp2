@@ -139,8 +139,8 @@ public class PetProvider extends ContentProvider {
         }
 
         // Check that the suppliers phone number is not null
-        Integer suppliersPhoneNumber = values.getAsInteger(InventoryContract.ProductEntry.COLUMN_SUPPLIER_PHONENUMBER);
-        if (suppliersPhoneNumber == null) {
+        String suppliersPhoneNumber = values.getAsString(InventoryContract.ProductEntry.COLUMN_SUPPLIER_PHONENUMBER);
+        if (suppliersPhoneNumber == "") {
             throw new IllegalArgumentException("Product requires a suppliers phone number ");
         }
 
