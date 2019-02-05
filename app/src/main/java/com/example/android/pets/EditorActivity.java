@@ -95,7 +95,7 @@ public class EditorActivity extends AppCompatActivity  implements LoaderManager.
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_editor);
 
-        setContentView(R.layout.list_item);
+        setContentView(R.layout.activity_editor);
 
         // Examine the intent that was used to launch this activity,
         // in order to figure out if we're creating a new pet or editing an existing one.
