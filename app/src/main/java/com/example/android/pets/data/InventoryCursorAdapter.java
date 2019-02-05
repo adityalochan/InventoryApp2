@@ -30,20 +30,20 @@ import com.example.android.pets.R;
 
 
 /**
- * {@link PetCursorAdapter} is an adapter for a list or grid view
+ * {@link InventoryCursorAdapter} is an adapter for a list or grid view
  * that uses a {@link Cursor} of pet data as its data source. This adapter knows
  * how to create list items for each row of pet data in the {@link Cursor}.
  */
-public class PetCursorAdapter extends CursorAdapter {
+public class InventoryCursorAdapter extends CursorAdapter {
 
     /**
-     * Constructs a new {@link PetCursorAdapter}.
+     * Constructs a new {@link InventoryCursorAdapter}.
      *
      * @param context The context
      * @param c       The cursor from which to get the data.
      */
-    public PetCursorAdapter(Context context, Cursor c) {
-        super(context, c, 1 /* flags */);
+    public InventoryCursorAdapter(Context context, Cursor c) {
+        super(context, c, 0 /* flags */);
     }
 
     /**
@@ -71,7 +71,7 @@ public class PetCursorAdapter extends CursorAdapter {
      * @param cursor  The cursor from which to get the data. The cursor is already moved to the
      *                correct row.
      */
-    String productQuantity = null;
+    int productQuantity = 1;
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
@@ -88,7 +88,7 @@ public class PetCursorAdapter extends CursorAdapter {
         // Read the pet attributes from the Cursor for the current pet
         String petName = cursor.getString(nameColumnIndex);
         String petBreed = cursor.getString(breedColumnIndex);
-//       productQuantity = cursor.getString(quantityColumnIndex);
+//       productQuantity = cursor.getInt(quantityColumnIndex);
 
         // If the pet breed is empty string or null, then use some default text
         // that says "Unknown breed", so the TextView isn't blank.
@@ -96,9 +96,9 @@ public class PetCursorAdapter extends CursorAdapter {
             petBreed = context.getString(R.string.unknown_breed);
         }
 
-        if (TextUtils.isEmpty(productQuantity)) {
-            productQuantity = context.getString(R.string.unknown_breed);
-        }
+//        if (TextUtils.isEmpty(productQuantity)) {
+//            productQuantity = context.getString(R.string.unknown_breed);
+//        }
 
         // Update the TextViews with the attributes for the current pet
         nameTextView.setText(petName);

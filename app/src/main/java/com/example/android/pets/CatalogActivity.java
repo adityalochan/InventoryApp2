@@ -34,7 +34,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.android.pets.data.InventoryContract;
-import com.example.android.pets.data.PetCursorAdapter;
+import com.example.android.pets.data.InventoryCursorAdapter;
 
 
 /**
@@ -50,7 +50,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
     private static final int PET_LOADER = 0;
 
     // Adapter for the list view
-    PetCursorAdapter mCursorAdapter;
+    InventoryCursorAdapter mCursorAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +103,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
 
         // Setup an adapter to create a list item for each row of pet data in the cursor.
         // There is no pet data yet (until the loader finishes) to pass in null for the cursor.
-        mCursorAdapter = new PetCursorAdapter(this, null);
+        mCursorAdapter = new InventoryCursorAdapter(this, null);
         petListView.setAdapter(mCursorAdapter);
     }
 
@@ -180,7 +180,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        // Update {@link PetCursorAdapter} with this new cursor containing new updated data
+        // Update {@link InventoryCursorAdapter} with this new cursor containing new updated data
         mCursorAdapter.swapCursor(data);
     }
 
