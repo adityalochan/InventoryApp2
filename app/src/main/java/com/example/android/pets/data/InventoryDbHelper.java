@@ -18,6 +18,7 @@ package com.example.android.pets.data;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.annotation.IntegerRes;
 
 import com.example.android.pets.data.InventoryContract.ProductEntry;
 
@@ -55,6 +56,7 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
                 + ProductEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + ProductEntry.COLUMN_PRODUCT_NAME + " TEXT NOT NULL, "
                 + ProductEntry.COLUMN_PRODUCT_PRICE + " TEXT, "
+                + ProductEntry.COLUMN_PRODUCT_QUANTITY + " INTEGER NOT NULL, "
                 + ProductEntry.COLUMN_SUPPLIER_NAME + " INTEGER NOT NULL, "
                 + ProductEntry.COLUMN_SUPPLIER_PHONENUMBER + " INTEGER NOT NULL DEFAULT 4172971000);";
 

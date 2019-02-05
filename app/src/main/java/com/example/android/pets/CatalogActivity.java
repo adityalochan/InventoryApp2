@@ -74,6 +74,11 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         View emptyView = findViewById(R.id.empty_view);
         petListView.setEmptyView(emptyView);
 
+        //setup an adapter to create a list item for each row of pet data in the cursor. There
+        // is no pet data yet (until the loader finishes) to pass in null for the cursor
+        mCursorAdapter = new InventoryCursorAdapter(this, null);
+        petListView.setAdapter(mCursorAdapter);
+
 
 //        Kicked of the loader
         getLoaderManager().initLoader(PET_LOADER,null,this);
@@ -167,7 +172,8 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         String[] projection = {
                 InventoryContract.ProductEntry._ID,
                 InventoryContract.ProductEntry.COLUMN_PRODUCT_NAME,
-                InventoryContract.ProductEntry.COLUMN_PRODUCT_PRICE };
+                InventoryContract.ProductEntry.COLUMN_PRODUCT_PRICE,
+                InventoryContract.ProductEntry.COLUMN_PRODUCT_QUANTITY};
 
         // This loader will execute the ContentProvider's  query method on a background thread
         return new CursorLoader(this,   // Parent activity content
