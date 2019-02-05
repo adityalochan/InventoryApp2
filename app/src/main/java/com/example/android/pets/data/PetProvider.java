@@ -132,6 +132,18 @@ public class PetProvider extends ContentProvider {
             throw new IllegalArgumentException("Product requires a name");
         }
 
+        //Check the price is not null
+        Integer price = values.getAsInteger(InventoryContract.ProductEntry.COLUMN_PRODUCT_PRICE);
+        if(price == null){
+            throw new IllegalArgumentException("Product requires a price");
+        }
+
+        //Check the quantity is not null
+        Integer quantity = values.getAsInteger(InventoryContract.ProductEntry.COLUMN_PRODUCT_QUANTITY);
+        if(quantity == null){
+            throw new IllegalArgumentException("Product requires a quantity");
+        }
+
         // Check that the suppliers name is not null
         String suppliersName = values.getAsString(InventoryContract.ProductEntry.COLUMN_SUPPLIER_NAME);
         if (suppliersName == null || !InventoryContract.ProductEntry.isValidGender(suppliersName)) {

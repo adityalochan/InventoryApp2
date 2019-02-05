@@ -16,6 +16,7 @@ package com.example.android.pets.data;
  * limitations under the License.
  */
 import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
@@ -24,8 +25,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
-
 import com.example.android.pets.R;
 
 
@@ -69,12 +70,13 @@ public class InventoryCursorAdapter extends CursorAdapter {
      * @param view    Existing view, returned earlier by newView() method
      * @param context app context
      * @param cursor  The cursor from which to get the data. The cursor is already moved to the
-     *                correct row.
+     * correct row.
      */
     int productQuantity = 1;
 
+    //changed context to final for adding sale button
     @Override
-    public void bindView(View view, Context context, Cursor cursor) {
+    public void bindView(View view, final Context context, Cursor cursor) {
         // Find individual views that we want to modify in the list item layout
         TextView nameTextView = (TextView) view.findViewById(R.id.name);
         TextView summaryTextView = (TextView) view.findViewById(R.id.summary);
@@ -107,25 +109,26 @@ public class InventoryCursorAdapter extends CursorAdapter {
 
 
         //Adding sales button funtion
-        String currentId = cursor.getString(cursor.getColumnIndexOrThrow(InventoryContract.ProductEntry._ID));
-        final Uri currentUri = ContentUris.withAppendedId(InventoryContract.ProductEntry.CONTENT_URI, Long.parseLong(currentId));
+       final String currentId = cursor.getString(cursor.getColumnIndexOrThrow(InventoryContract.ProductEntry._ID));
+//        final Uri currentUri = ContentUris.withAppendedId(InventoryContract.ProductEntry.CONTENT_URI, Long.parseLong(currentId));
 
 
-//        Button saleButton = (Button) findViewbyId(R.id.sale);
+//        final Button saleButton = (Button) findViewbyId(R.id.sale);
 //
 //        saleButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // check the quantity to be more than 1
+//            public void onClick(View view) {
 //                if (productQuantity > 0) {
+//                    // Decrement the quantity
+//                    int newQuantity = productQuantity - 1;
+//
+//                    // Creating URI for specific product for updating new quantity
+//                    Uri productUri = ContentUris.withAppendedId(InventoryContract.ProductEntry.CONTENT_URI, Long.parseLong(currentId));
+//
+//                    // Creating contentValue to update quantity only
 //                    ContentValues values = new ContentValues();
-//                    values.put(InventoryContract.ProductEntry.COLUMN_PRODUCT_QUANTITY, (productQuantity - 1));
-//                    //update the current value
-//                    int newUpdate = context.getContentResolver().update(currentUri, values, null, null);
-//                    if (newUpdate == 0)
-//                        Toast.makeText(context, R.string.error_in_updating, Toast.LENGTH_SHORT).show();
-//                } else
-//                    Toast.makeText(context, R.string.quantity_not_valid, Toast.LENGTH_SHORT).show();
+//                    values.put(InventoryContract.ProductEntry.COLUMN_PRODUCT_QUANTITY, newQuantity);
+//                    context.getContentResolver().update(productUri, values, null, null);
+//                }
 //            }
 //        });
     }
