@@ -60,6 +60,38 @@
                 android:inputType="textCapWords"
                 style="@style/EditorFieldStyle" />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/activity_margin">
+
+                <Button xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/button_decreaseQuantity"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    />
+
+                <TextView
+                    android:id="@+id/quantity1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quantity"
+                    android:fontFamily="sans-serif-medium"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textColor="#2B3D4D" />
+
+                <Button xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/button_increaseQuantity"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    />
+
+            </LinearLayout>
+
+
 
         </LinearLayout>
     </LinearLayout>
@@ -119,7 +151,36 @@
                 android:inputType="number"
                 style="@style/EditorFieldStyle" />
 
-
         </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <Button xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/call"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Call"
+        android:layout_marginLeft="50dp"
+        />
+
+    <Button
+        android:id="@+id/sale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sale"
+        android:layout_marginLeft="20dp"
+        />
     </LinearLayout>
 </LinearLayout>
+
+
+
+
