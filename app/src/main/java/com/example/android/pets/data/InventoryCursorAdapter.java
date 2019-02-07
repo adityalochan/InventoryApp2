@@ -72,7 +72,7 @@ public class InventoryCursorAdapter extends CursorAdapter {
      * @param cursor  The cursor from which to get the data. The cursor is already moved to the
      * correct row.
      */
-    int productQuantity = 1;
+    String productQuantity = null;
 
     //changed context to final for adding sale button
     @Override
@@ -80,7 +80,7 @@ public class InventoryCursorAdapter extends CursorAdapter {
         // Find individual views that we want to modify in the list item layout
         TextView nameTextView = (TextView) view.findViewById(R.id.name);
         TextView summaryTextView = (TextView) view.findViewById(R.id.summary);
-        TextView quantityTextView = (TextView) view.findViewById(R.id.quantity1);
+        TextView quantityTextView = (TextView) view.findViewById(R.id.edit_product_quantity1);
 
         // Find the columns of pet attributes that we're interested in
         int nameColumnIndex = cursor.getColumnIndex(InventoryContract.ProductEntry.COLUMN_PRODUCT_NAME);
@@ -90,7 +90,7 @@ public class InventoryCursorAdapter extends CursorAdapter {
         // Read the pet attributes from the Cursor for the current pet
         String petName = cursor.getString(nameColumnIndex);
         String petBreed = cursor.getString(breedColumnIndex);
-//       productQuantity = cursor.getInt(quantityColumnIndex);
+        productQuantity = cursor.getString(quantityColumnIndex);
 
         // If the pet breed is empty string or null, then use some default text
         // that says "Unknown breed", so the TextView isn't blank.
@@ -105,7 +105,7 @@ public class InventoryCursorAdapter extends CursorAdapter {
         // Update the TextViews with the attributes for the current pet
         nameTextView.setText(petName);
         summaryTextView.setText(petBreed);
-//        quantityTextView.setText(productQuantity);
+        quantityTextView.setText(productQuantity);
 
 
         //Adding sales button funtion
@@ -113,23 +113,23 @@ public class InventoryCursorAdapter extends CursorAdapter {
 //        final Uri currentUri = ContentUris.withAppendedId(InventoryContract.ProductEntry.CONTENT_URI, Long.parseLong(currentId));
 
 
-//        final Button saleButton = (Button) findViewbyId(R.id.sale);
-//
-//        saleButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View view) {
-//                if (productQuantity > 0) {
-//                    // Decrement the quantity
-//                    int newQuantity = productQuantity - 1;
-//
-//                    // Creating URI for specific product for updating new quantity
-//                    Uri productUri = ContentUris.withAppendedId(InventoryContract.ProductEntry.CONTENT_URI, Long.parseLong(currentId));
-//
-//                    // Creating contentValue to update quantity only
-//                    ContentValues values = new ContentValues();
-//                    values.put(InventoryContract.ProductEntry.COLUMN_PRODUCT_QUANTITY, newQuantity);
-//                    context.getContentResolver().update(productUri, values, null, null);
-//                }
-//            }
-//        });
+        final Button saleButton = (Button) view.findViewById(R.id.sale);
+
+        saleButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                if (Integer.parseInt(productQuantity) > 0) {
+                    // Decrement the quantity
+                    int newQuantity = Integer.parseInt(productQuantity) - 1;
+
+                    // Creating URI for specific product for updating new quantity
+                    Uri productUri = ContentUris.withAppendedId(InventoryContract.ProductEntry.CONTENT_URI, Long.parseLong(currentId));
+
+                    // Creating contentValue to update quantity only
+                    ContentValues values = new ContentValues();
+                    values.put(InventoryContract.ProductEntry.COLUMN_PRODUCT_QUANTITY, newQuantity);
+                    context.getContentResolver().update(productUri, values, null, null);
+                }
+            }
+        });
     }
 }

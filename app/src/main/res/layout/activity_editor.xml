@@ -171,13 +171,7 @@
         android:layout_marginLeft="50dp"
         />
 
-    <Button
-        android:id="@+id/sale"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sale"
-        android:layout_marginLeft="20dp"
-        />
+
     </LinearLayout>
 </LinearLayout>
 

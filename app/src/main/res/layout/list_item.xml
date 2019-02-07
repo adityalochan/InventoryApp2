@@ -27,11 +27,27 @@
             android:id="@+id/summary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="200dp"
+            android:layout_marginLeft="60dp"
             android:fontFamily="sans-serif"
             android:textAppearance="?android:textAppearanceSmall"
             android:textColor="#AEB6BD"  />
 
+        <!-- Quantity field -->
+        <EditText
+            android:id="@+id/edit_product_quantity1"
+            android:hint="@string/hint_product_quantity"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/EditorFieldStyle" />
+
+        <Button
+            android:id="@+id/sale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sale"
+            android:layout_marginLeft="20dp"
+            />
     </LinearLayout>
 
 </LinearLayout>
